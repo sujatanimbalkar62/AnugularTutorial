@@ -1,0 +1,205 @@
+
+<kendo-appbar position="top">
+  <kendo-appbar-section>
+    <button class="k-button k-button-clear">
+      <kendo-icon name="menu"></kendo-icon>
+    </button>
+  </kendo-appbar-section>
+
+  <kendo-appbar-section>
+    <h1 class="title">Kendo UI for Angular</h1>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer width="32px"></kendo-appbar-spacer>
+
+  <kendo-appbar-section>
+    <ul>
+      <li><a>What's New</a></li>
+     <li routerLink="/map">Map</li>
+    <li routerLink="/mergemap">MergeMap</li>
+    </ul>
+    <router-outlet></router-outlet>
+    <!-- <button kendoButton *ngIf="!opened" (click)="open()">Open window</button> -->
+  </kendo-appbar-section>
+  <kendo-appbar-section class="actions">
+    <button
+      kendoButton
+      *ngIf="!opened"
+      [primary]="true"
+      [toggleable]="true"
+      (click)="open()"
+   
+    >
+    <!-- {{ displayElement ? "Add" : "Update" }} -->
+    Add
+    </button>
+    <kendo-appbar-spacer  width="500px"></kendo-appbar-spacer>
+   
+    <kendo-appbar-section >
+      <!-- <kendo-avatar
+      [data]="settings"
+        [imageSrc]="kendokaAvatar"
+        shape="circle"
+        width="35px"
+        height="35px"
+      > </kendo-avatar> -->
+      
+      <kendo-avatar [data]="settings"
+      [imageSrc]="kendokaAvatar"
+      shape="circle"
+      width="35px"
+      height="35px"
+       >
+       
+      </kendo-avatar>
+      <kendo-dropdownbutton
+      [icon]="icon"
+        [data]="settings"
+        [imageSrc]="kendokaAvatar"
+        shape="circle"
+        width="35px"
+        height="35px"
+      ></kendo-dropdownbutton>
+   
+      <kendo-appbar-spacer width="10px"></kendo-appbar-spacer>
+      <button
+      kendoButton
+      [primary]="true"
+      [toggleable]="true" 
+      (click)="signOut()"
+   
+    >
+    <!-- {{ displayElement ? "Add" : "Update" }} -->
+    Sign Out
+    </button>
+
+    </kendo-appbar-section>
+  
+  </kendo-appbar-section>
+
+  <div class="example-wrapper">
+    <kendo-window
+      title="Please provide additional data"
+      *ngIf="opened"
+      (close)="close()"
+      [minWidth]="250"
+      [width]="450"
+    >
+      <form class="k-form" [formGroup]="form">
+        <fieldset>
+          <legend>User Details</legend>
+          <!-- <label class="k-form-field">
+            <span>Employee Id</span>
+            <input
+              class="k-textbox"
+              placeholder="Employee Id"
+              formControlName="id"
+            />
+          </label> -->
+
+          <label class="k-form-field">
+            <span>First Name</span>
+            <input
+              class="k-textbox"
+              placeholder="Your Name"
+              formControlName="firstName"
+            />
+          </label>
+          <label class="k-form-field">
+            <span>Middle Name</span>
+            <input
+              class="k-textbox"
+              placeholder="Your Middle Name"
+              formControlName="middleName"
+            />
+          </label>
+          <label class="k-form-field">
+            <span>Last Name</span>
+            <input
+              class="k-textbox"
+              placeholder="Your Last Name"
+              formControlName="lastName"
+            />
+          </label>
+          <label class="k-form-field">
+            <span>Mobile</span>
+            <input
+              class="k-textbox"
+              placeholder="Your Mobile"
+              formControlName="mobile"
+            />
+          </label>
+          <label class="k-form-field">
+            <span>Address</span>
+            <input
+              class="k-textbox"
+              placeholder="Your Address"
+              formControlName="address"
+            />
+          </label>
+        </fieldset>
+
+        <div class="k-actions k-actions-end">
+          <button type="button" id="cancel" class="k-button" (click)="close()">
+            Cancel
+          </button>  
+          <button 
+            type="button"
+            class="k-button k-primary"
+            (click)="addupdate()"
+           
+          >
+          {{ Id ? "Update" : "Save" }} 
+          </button>
+        </div>
+      </form>
+    </kendo-window>
+  </div>
+
+  <kendo-grid [data]="gridData" [height]="410">
+    <kendo-grid-column field="id" title="ID" [width]="40"> </kendo-grid-column>
+
+    <kendo-grid-column field="firstName" title="FirstName" [width]="250">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="middleName" title="MiddleName" [width]="250">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="lastName" title="LastName" [width]="250">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="address" title="Address" [width]="250">
+    </kendo-grid-column>
+
+    <kendo-grid-command-column title="Command">
+      <ng-template
+        kendoGridCellTemplate
+        let-isNew="isNew"
+        let-dataItem
+        let-rowIndex="rowIndex"
+      >
+        <button
+          kendoButton
+          *ngIf="!opened"
+          [toggleable]="true"
+          (click)="onEdit(dataItem)"
+          kendoGridEditCommand
+          [primary]="true"
+        
+        >
+          Edit
+        </button>
+        <button kendoGridRemoveCommand (click)="deleteEmployee(dataItem)" >
+          Remove
+        </button>
+        <!-- <button kendoGridSaveCommand [disabled]="formGroup?.invalid">
+          {{ isNew ? "Add" : "Update" }}
+        </button>
+        <button kendoGridCancelCommand>
+          {{ isNew ? "Discard changes" : "Cancel" }}
+        </button> -->
+      </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid></kendo-appbar>
+  <ul>
+   

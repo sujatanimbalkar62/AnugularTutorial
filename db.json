@@ -1,0 +1,28 @@
+{
+  "restarents": [
+    {
+      "id": 1,
+      "firstName": "ghjkl;",
+      "middleName": "Ramnath",
+      "lastName": "Aher",
+      "mobile": 9527148820,
+      "address": "Nashik"
+    },
+    {
+      "id": 2,
+      "firstName": "Amol",
+      "middleName": "Ramnath",
+      "lastName": "Aher",
+      "mobile": 9527148820,
+      "address": "Nashik"
+    },
+    {
+      "id": 3,
+      "firstName": "Amol",
+      "middleName": "Ramnath",
+      "lastName": "Aher",
+      "mobile": 9527148820,
+      "address": "Nashik"
+    }
+  ]
+}
