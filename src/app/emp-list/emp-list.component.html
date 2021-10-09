@@ -1,0 +1,92 @@
+<div>
+    <div class="actions">
+        <button kendoButton *ngIf="!opened" [primary]="true" [toggleable]="true" (click)="open()">
+            <!-- {{ displayElement ? "Add" : "Update" }} -->
+            Add
+        </button>
+    </div>
+    <kendo-appbar>
+        <kendo-grid [data]="gridData" [height]="410">
+            <kendo-grid-column field="id" title="ID" [width]="40"> </kendo-grid-column>
+
+            <kendo-grid-column field="firstName" title="FirstName" [width]="250">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="middleName" title="MiddleName" [width]="250">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="lastName" title="LastName" [width]="250">
+            </kendo-grid-column>
+
+            <kendo-grid-column field="address" title="Address" [width]="250">
+            </kendo-grid-column>
+
+            <kendo-grid-command-column title="Command">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                    <button kendoButton *ngIf="!opened" [toggleable]="true" (click)="onEdit(dataItem)"
+                        kendoGridEditCommand [primary]="true">
+                        Edit
+                    </button>
+                    <button kendoGridRemoveCommand (click)="deleteEmployee(dataItem)">
+                        Remove
+                    </button>
+                    <!-- <button kendoGridSaveCommand [disabled]="formGroup?.invalid">
+          {{ isNew ? "Add" : "Update" }}
+        </button>
+        <button kendoGridCancelCommand>
+          {{ isNew ? "Discard changes" : "Cancel" }}
+        </button> -->
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </kendo-appbar>
+
+    <div class="example-wrapper">
+        <kendo-window title="Please provide additional data" *ngIf="opened" (close)="close()" [minWidth]="250"
+            [width]="450">
+            <form class="k-form" [formGroup]="form">
+                <fieldset>
+                    <legend>User Details</legend>
+                    <!-- <label class="k-form-field">
+            <span>Employee Id</span>
+            <input
+              class="k-textbox"
+              placeholder="Employee Id"
+              formControlName="id"
+            />
+          </label> -->
+
+                    <label class="k-form-field">
+                        <span>First Name</span>
+                        <input class="k-textbox" placeholder="Your Name" formControlName="firstName" />
+                    </label>
+                    <label class="k-form-field">
+                        <span>Middle Name</span>
+                        <input class="k-textbox" placeholder="Your Middle Name" formControlName="middleName" />
+                    </label>
+                    <label class="k-form-field">
+                        <span>Last Name</span>
+                        <input class="k-textbox" placeholder="Your Last Name" formControlName="lastName" />
+                    </label>
+                    <label class="k-form-field">
+                        <span>Mobile</span>
+                        <input class="k-textbox" placeholder="Your Mobile" formControlName="mobile" />
+                    </label>
+                    <label class="k-form-field">
+                        <span>Address</span>
+                        <input class="k-textbox" placeholder="Your Address" formControlName="address" />
+                    </label>
+                </fieldset>
+
+                <div class="k-actions k-actions-end">
+                    <button type="button" id="cancel" class="k-button" (click)="close()">
+                        Cancel
+                    </button>
+                    <button type="button" class="k-button k-primary" (click)="addupdate()">
+                        {{ Id ? "Update" : "Save" }}
+                    </button>
+                </div>
+            </form>
+        </kendo-window>
+    </div>
+</div>

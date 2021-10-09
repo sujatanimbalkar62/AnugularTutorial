@@ -29,6 +29,9 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { MenuModule } from '@progress/kendo-angular-menu';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider,  FacebookLoginProvider} from 'angularx-social-login';
+import { EmpListComponent } from './emp-list/emp-list.component';
+import { ParentXCompComponent } from './inputoutputparameter/parent-xcomp/parent-xcomp.component';
+import { ChildCompComponent } from './inputoutputparameter/child-comp/child-comp.component';
 
 
 
@@ -41,6 +44,9 @@ import {GoogleLoginProvider,  FacebookLoginProvider} from 'angularx-social-login
     MapComponent,
     MergemapComponent,
     AuthComponent,
+    EmpListComponent,
+    ParentXCompComponent,
+    ChildCompComponent,
    
   
   ],
